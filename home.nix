@@ -3,6 +3,7 @@
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   jack-info = import ./jack-info.nix {inherit pkgs;};
+  nvim-settings = import ./conf/nvim.nix pkgs;
   
 
 in
@@ -12,6 +13,7 @@ in
   ];
 
   home-manager.users.jack = {
+	programs.neovim = nvim-settings;	
   	programs.alacritty = {
 		enable = true;
   		settings = {
